@@ -95,7 +95,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       posts,
       projects,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
 
@@ -121,7 +121,6 @@ export default function Home({ posts, projects }: { posts: post[], projects: Pro
               ))}
             </div>
           </div>
-
           <div className={styles.posts}>
             {posts?.map((post, id) => (
               <BlogCard key={id}
@@ -134,7 +133,6 @@ export default function Home({ posts, projects }: { posts: post[], projects: Pro
             ))}
           </div>
         </main>
-
         <Bubbles />
       </div>
     </>
