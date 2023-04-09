@@ -3,16 +3,22 @@
     color: #fff;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     max-width: 1200px;
     margin: 32px 0 32px 0;
     border-radius: 50vw;
     height: 100px;
     overflow: hidden;
-    padding-left: 10px;
+    padding: 0 10px 0 10px;
     backdrop-filter: blur(5px);
 }
 
+.hero {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
 
 .navbar img {
     width: 75px;
@@ -38,24 +44,59 @@
 }
 
 .styledText {
-    background: linear-gradient(45deg, #f783ed, #318df7);
+    background: linear-gradient(45deg, #7250c0da, #ac58fa9a);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 600;
     opacity: 1;
 }
 
-@media screen and (max-width: 560px) {
+.socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    max-width: 150px;
+    width: 100%;
+    gap: 16px;
+    overflow: hidden;
+}
+
+.icon {
+    position: relative;
+    font-size: 36px;
+    font-weight: 600;
+    opacity: .8;
+    transition: all .3s;
+}
+
+.icon:hover {
+    color: var(--additional-color);
+    opacity: 1;
+    scale: .95;
+}
+
+@media screen and (max-width: 610px) {
+    .socials {
+        max-width: 110px;
+    }
+    
+    .icon {
+        font-size: 24px;
+    }
+
     .navbar {
         height: 75px;
     }
 
     .navbar img {
+        align-self: center;
         width: 50px;
+        height: 50px;
     }
 
     .userInfo p {
-        font-size: 18px;
+        display: none;
     }
 
     .userInfo p:nth-child(2) {

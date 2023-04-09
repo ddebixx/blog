@@ -20,7 +20,7 @@
 }
 
 .blog img {
-    max-height: 500px;
+    max-height: 100%;
     border-radius: 4px;
 }
 
@@ -51,11 +51,12 @@
     width: 100%;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
-    padding: 20px;
+    padding: 20px 150px 20px 150px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     backdrop-filter: blur(10px);
+    margin: 0 0 32px 0;
 }
 
 .content h2 {
@@ -72,3 +73,21 @@
     color: rgba(255, 255, 255, 0.8);
     text-align: left;
 }
+
+@media screen and (max-width: 768px) {
+    .content h2 {
+        font-size: 1.4rem;
+        letter-spacing: .1rem;
+        font-weight: 500;
+    }
+
+    .content p {
+        margin-top: 10px;
+        font-size: 1rem;
+    }
+
+    .content {
+        padding: 10px;
+    }
+}
+    

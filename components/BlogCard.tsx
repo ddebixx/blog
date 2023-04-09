@@ -19,11 +19,11 @@ export const BlogCard = ({ title, author, coverPhoto, datePublished, slug }: { t
                     mb-4`}>
                         <h2 className="text-white
                         text-xl
-                        ">{title}</h2>
-                        <div className={`${styles.details}
-                        flex
-                        flex-row
-                        gap-4`}></div>
+                        m-0
+                        
+                        max-md:max-w-[250px]
+                        max-md:overflow-hidden">{title}</h2>
+                        
                         <div className={`${styles.author} 
                         flex
                         gap-4

@@ -3,10 +3,16 @@ import styles from '@/styles/Home.module.scss'
 import { GraphQLClient, gql } from 'graphql-request'
 import { BlogCard } from '@/components/BlogCard';
 import { Navbar } from '@/components/Navbar';
-import { Bubbles } from '@/components/Bubbles';
 import { ProjectCard } from '@/components/ProjectCard';
 import { Info } from '@/components/Info';
 import { GetStaticProps } from 'next';
+import { AnimatedParticles } from '@/components/AnimatedParticles';
+import { Nunito} from 'next/font/google'
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const graphcms = new GraphQLClient(
   "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg6idcnc0tde01t3cvzvgg5l/master"
@@ -49,7 +55,7 @@ const PROJECT_QUERY = gql`
   }
 `
 
-interface post {
+interface Post {
   id: string;
   title: string;
   datePublished: string;
@@ -79,32 +85,30 @@ interface Project {
 }
 
 interface Props {
-  posts: post[];
+  posts: Post[];
   projects: Project[];
 }
 
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { posts } = await graphcms.request<{ posts: post[] }>(QUERY);
-  const { projects } = await graphcms.request<{ projects: Project[] }>(
-    PROJECT_QUERY
-  );
+  const { posts } = await graphcms.request<{ posts: Post[] }>(QUERY);
+  const { projects } = await graphcms.request<{ projects: Project[] }>(PROJECT_QUERY);
 
   return {
     props: {
       posts,
       projects,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
 
-export default function Home({ posts, projects }: { posts: post[], projects: Project[] }) {
+export default function Home({ posts, projects }: { posts: Post[], projects: Project[] }) {
   return (
     <>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${nunito.className}`}>
         <Head>
-          <title>Dupa</title>
+          <title>debix</title>
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         </Head>
         <Navbar author={posts[0].author} />
@@ -114,7 +118,7 @@ export default function Home({ posts, projects }: { posts: post[], projects: Pro
             <div className={styles.projectsContainer}>
               {projects?.map((Project, id) => (
                 <ProjectCard key={id}
-                projectTitle={Project.projectTitle}
+                  projectTitle={Project.projectTitle}
                   projectPhoto={Project.projectPhoto}
                   projectDescription={Project.projectDescription}
                 />
@@ -133,9 +137,8 @@ export default function Home({ posts, projects }: { posts: post[], projects: Pro
             ))}
           </div>
         </main>
-        <Bubbles />
+        <AnimatedParticles />
       </div>
     </>
-
   )
 }

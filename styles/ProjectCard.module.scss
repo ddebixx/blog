@@ -76,3 +76,18 @@
     transition: all .6s ease-in-out;
 }
 
+@media screen and (max-width: 768px) {
+    .project {
+        gap: 10px;
+    }
+
+    .project h1 {
+        font-size: 1.3rem;
+    }
+
+    .projectText {
+        background-color: transparent;
+        position: relative;
+        opacity: 1;
+    }
+}

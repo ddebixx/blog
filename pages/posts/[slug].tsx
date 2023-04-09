@@ -1,8 +1,14 @@
 import { GraphQLClient, gql } from 'graphql-request'
 import styles from '@/styles/Slug.module.scss'
 import Image from 'next/image'
-import { Bubbles } from '@/components/Bubbles';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { AnimatedParticles } from '@/components/AnimatedParticles';
+import { Nunito} from 'next/font/google'
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const graphcms = new GraphQLClient(
     "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clg6idcnc0tde01t3cvzvgg5l/master"
@@ -102,7 +108,7 @@ interface Post {
 export default function BlogPost({ post }: { post: Post }) {
     return (
         <>
-            <div className={styles.container}>
+            <div className={`${styles.container} ${nunito.className}`}>
                 <main className={styles.blog}>
                     <div>
                         <Image src={post.coverPhoto.url} alt="" width={2000} height={2000} className={styles.cover} />
@@ -120,7 +126,7 @@ export default function BlogPost({ post }: { post: Post }) {
                         <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
                     </div>
                 </main>
-                <Bubbles />
+                <AnimatedParticles />
             </div>
 
         </>
