@@ -46,10 +46,12 @@
 }
 
 .projectsContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: flex-start;
+    // align-items: flex-end;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
     margin: 0;
     max-width: 1200px;
@@ -58,6 +60,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
     position: relative;
+    margin: 0 0 100px 0;
 }
 
 .projectsContainer:after {
