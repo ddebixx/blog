@@ -77,6 +77,8 @@
 }
 
 @media screen and (max-width: 768px) {
+
+
     .project {
         gap: 10px;
     }
@@ -89,5 +91,9 @@
         background-color: transparent;
         position: relative;
         opacity: 1;
+    }
+
+    .projectText {
+        top: 0;
     }
 }

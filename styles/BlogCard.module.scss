@@ -4,15 +4,17 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-width: 600px;
+    width: 100%;
     max-height: 500px;
     backdrop-filter: blur(5px);
+    flex-shrink: 0;
 }
 
 .imgContainer img {
     max-width: 100%;
     max-height: 250px;
     border-radius: 4px 4px 0 0;
+    flex-shrink: 0;
 }
 
 .avatar {
@@ -24,13 +26,10 @@
 
 @media screen and (max-width: 1024px) {
     .card {
-        max-width: 250px;
-        width: 100%;
+        width: 250px;
         height: 300px;
         justify-items: flex-end;
     }
-
-    
 
     .imgContainer img {
         max-width: 100%;
